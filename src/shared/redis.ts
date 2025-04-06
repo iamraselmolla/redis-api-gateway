@@ -18,7 +18,7 @@ const connect = async () => {
   await redisClient.connect();
 };
 
-export const redisClient = {
+export const RedisConnect = {
   connect
 };
 
