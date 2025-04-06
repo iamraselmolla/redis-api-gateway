@@ -36,6 +36,19 @@ client.on("error", (err) => {
         res.status(500).send("Redis error");
       }
     });
+    app.get("/publish", async (req, res) => {
+      try {
+        const message = JSON.stringify({
+          event: "visit",
+          timestamp: Date.now(),
+        });
+        await client.publish("updates", message);
+        res.send("Message published to 'updates' channel");
+      } catch (err) {
+        console.error("Publish error:", err);
+        res.status(500).send("Failed to publish message");
+      }
+    });
 
     app.listen(3005, () => {
       console.log("Server started on port 3005");
