@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { config } from 'dotenv';
+import config from '../config';
 
 const HttpServices = (baseUrl: string): AxiosInstance => {
   const instance = axios.create({
@@ -28,5 +28,8 @@ const HttpServices = (baseUrl: string): AxiosInstance => {
   );
   return instance;
 };
+
+const AuthService = HttpServices(config.authServiceUrl);
+const CoreService = HttpServices(config.coreServiceUrl);
 
 export default HttpServices;
