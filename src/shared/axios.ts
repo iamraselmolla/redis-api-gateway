@@ -32,4 +32,4 @@ const HttpServices = (baseUrl: string): AxiosInstance => {
 const AuthService = HttpServices(config.authServiceUrl);
 const CoreService = HttpServices(config.coreServiceUrl);
 
-export default HttpServices;
+export { AuthService, CoreService, HttpServices };
