@@ -5,7 +5,7 @@
   "author": "Programming Hero",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch \"src/**/*.ts\" --ignore \"src/**/*.spec.ts\" --exec ts-node -T ./src/server.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' -T ./src/server.ts",
     "build": "tsc"
   },
   "dependencies": {
@@ -52,7 +52,7 @@
     "path": "^0.12.7",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }

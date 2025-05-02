@@ -1,35 +1,38 @@
-import axios, { AxiosInstance } from 'axios';
-import config from '../config';
+import axios, { AxiosInstance } from "axios";
+import config from "../config";
 
-const HttpServices = (baseUrl: string): AxiosInstance => {
-  const instance = axios.create({
-    baseURL: baseUrl,
-    timeout: 3000,
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+const HttpService = (baseUrl: string): AxiosInstance => {
+    const instance = axios.create({
+        baseURL: baseUrl,
+        timeout: 10000,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 
-  instance.interceptors.request.use(
-    (config) => {
-      return config;
-    },
-    (error) => {
-      return error;
-    }
-  );
-  instance.interceptors.response.use(
-    (response) => {
-      return response.data;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
-  return instance;
-};
+    instance.interceptors.request.use(
+        (config) => {
+            return config
+        },
+        (error) => {
+            return error
+        }
+    );
 
-const AuthService = HttpServices(config.authServiceUrl);
-const CoreService = HttpServices(config.coreServiceUrl);
+    instance.interceptors.response.use(
+        (response) => {
+            return response.data
+        },
+        (error) => {
+            return Promise.reject(error)
+        }
+    );
 
-export { AuthService, CoreService, HttpServices };
+    return instance;
+}
+
+const AuthService = HttpService(config.authServiceUrl);
+const CoreService = HttpService(config.coreServiceUrl);
+const PaymentService = HttpService(config.paymentServiceUrl);
+
+export { HttpService, AuthService, CoreService, PaymentService }
