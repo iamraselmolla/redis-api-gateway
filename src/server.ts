@@ -4,7 +4,7 @@ import config from './config';
 import logger from './shared/logger';
 import { RedisClient } from './shared/redis';
 
-
+// Bootstrap the server
 async function bootstrap() {
   await RedisClient.connect();
   const server: Server = app.listen(config.port, () => {
